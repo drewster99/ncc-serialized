@@ -4,6 +4,7 @@
 // db@nuclearcyborg.com
 
 import Foundation
+import NCCThreadExtensions
 
 @propertyWrapper public struct NCCSerialized<Wrapped> {
     private let queue = DispatchQueue(label: "DispatchQueueLocked\(UUID().uuidString)")
@@ -23,6 +24,6 @@ import Foundation
     }
 
     public init(wrappedValue: Wrapped) {
-        self.wrappedValue = wrappedValue
+        self._wrappedValue = wrappedValue
     }
 }
